@@ -2,27 +2,13 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Dokter;
 
 class DokterSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-   public function run()
-{
-    \App\Models\Dokter::create([
-        'nama' => 'Dr. Andi Wijaya',
-        'spesialis' => 'Umum',
-        'poliklinik_id' => 1
-    ]);
-
-    \App\Models\Dokter::create([
-        'nama' => 'Drg. Rina Lestari',
-        'spesialis' => 'Gigi',
-        'poliklinik_id' => 2
-    ]);
-}
-
+    public function run(): void
+    {
+        Dokter::factory()->count(10)->create(); // buat 10 dokter dummy
+    }
 }

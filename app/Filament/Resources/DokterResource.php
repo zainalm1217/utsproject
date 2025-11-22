@@ -4,14 +4,11 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\DokterResource\Pages;
 use App\Models\Dokter;
+use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables\Table;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables;
-use Filament\Forms;
+use Filament\Tables\Table;
 
 class DokterResource extends Resource
 {
@@ -25,22 +22,21 @@ class DokterResource extends Resource
     {
         return $form
             ->schema([
-                Select::make('poliklinik_id')
+                Forms\Components\Select::make('poliklinik_id')
                     ->label('Poliklinik')
                     ->relationship('poliklinik', 'nama')
                     ->required(),
 
-                TextInput::make('nama')
-                    ->label('Nama Dokter')
+                Forms\Components\TextInput::make('nama')
                     ->required()
                     ->maxLength(255),
 
-                TextInput::make('spesialis')
-                    ->label('Spesialis')
-                    ->required(),
+                Forms\Components\TextInput::make('spesialis')
+                    ->required()
+                    ->maxLength(255),
 
-                TextInput::make('telepon')
-                    ->label('No. Telepon')
+                Forms\Components\TextInput::make('telepon')
+                    ->label('Nomor Telepon')
                     ->tel()
                     ->maxLength(20)
                     ->required(),
@@ -51,27 +47,25 @@ class DokterResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('nama')
+                Tables\Columns\TextColumn::make('nama')
                     ->label('Nama Dokter')
-                    ->sortable()
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
 
-                TextColumn::make('poliklinik.nama')
+                Tables\Columns\TextColumn::make('poliklinik.nama')
                     ->label('Poliklinik')
-                    ->sortable()
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
 
-                TextColumn::make('spesialis')
-                    ->label('Spesialis')
-                    ->sortable()
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('spesialis')
+                    ->searchable()
+                    ->sortable(),
 
-                TextColumn::make('telepon')
-                    ->label('Telepon'),
+                Tables\Columns\TextColumn::make('telepon'),
 
-                TextColumn::make('created_at')
-                    ->label('Dibuat')
+                Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
+                    ->label('Dibuat')
                     ->sortable(),
             ])
             ->actions([
@@ -83,11 +77,6 @@ class DokterResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
-    }
-
-    public static function getRelations(): array
-    {
-        return [];
     }
 
     public static function getPages(): array

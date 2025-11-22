@@ -6,25 +6,15 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
-{
-    Schema::create('reseps', function (Blueprint $table) {
-        $table->id();
-        $table->foreignId('pasien_id')->constrained('pasiens')->cascadeOnDelete();
-        $table->foreignId('dokter_id')->constrained('dokters')->cascadeOnDelete();
-        $table->date('tanggal');
-        $table->text('catatan')->nullable();
-        $table->timestamps();
-    });
-}
+    {
+        Schema::create('reseps', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('kunjungan_id')->constrained('kunjungans')->cascadeOnDelete();
+            $table->timestamps();
+        });
+    }
 
-
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('reseps');

@@ -2,18 +2,17 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
-namespace Database\Seeders;
-
 use App\Models\Poliklinik;
-use Illuminate\Database\Seeder;
 
 class PoliklinikSeeder extends Seeder
 {
+    /**
+     * Run the database seeds.
+     */
     public function run(): void
     {
+        // Buat 10 data poliklinik pakai factory
         Poliklinik::factory()->count(10)->create();
     }
 }

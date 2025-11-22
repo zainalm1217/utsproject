@@ -16,7 +16,7 @@ return new class extends Migration
         $table->foreignId('poliklinik_id')->nullable()->constrained('polikliniks')->cascadeOnDelete();
         $table->string('nama');
         $table->string('spesialis');
-        $table->string('telepon', 20);
+        $table->string('telepon', 20)->nullable();
         $table->timestamps();
     });
 }

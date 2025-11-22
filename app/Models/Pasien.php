@@ -36,4 +36,10 @@ class Pasien extends Model
     {
         return $this->hasMany(Resep::class);
     }
+    public function dokter()
+    {
+        return $this->belongsTo(\App\Models\Dokter::class);
+    }
+
+    
 }
