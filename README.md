@@ -16,14 +16,6 @@ php artisan key:generate
 # Jalankan Sail\./vendor/bin/sail up -d
 ```
 
-## 🛠️ Git Workflow
-Cara melakukan push ulang:
-```bash
-git add .
-git commit -m "update terbaru"
-git push origin main
-```
-
 ## 📂 Struktur Proyek (contoh)
 ```
 project/
@@ -34,9 +26,3 @@ project/
 ├── database/
 └── README.md
 ```
-
-## 📞 Kontak
-Silakan hubungi developer jika ada pertanyaan lebih lanjut.
-
----
-README ini bersifat sementara dan akan diperbarui setelah fitur utama selesai dibuat.
